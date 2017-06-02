@@ -65,6 +65,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS栈的实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/02/JS栈的实现/" class="article-date">
+  <time datetime="2017-06-02T11:45:02.000Z" itemprop="datePublished">2017-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/02/JS栈的实现/">JS栈的实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>栈是一个很基础的数据结构, 属于先进后出类型, 在底层的软件当中有着广泛的应用</p>
+<p>下面是相关API代码以及示例代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Stack</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.dataStore = []; <span class="comment">//用数组实现</span></div><div class="line">	<span class="keyword">this</span>.top = <span class="number">0</span>;</div><div class="line">	<span class="keyword">this</span>.push = push;   <span class="comment">//栈的压入</span></div><div class="line">	<span class="keyword">this</span>.pop = pop;     <span class="comment">//栈的弹出</span></div><div class="line">	<span class="keyword">this</span>.peek = peek;   <span class="comment">//栈的顶部元素</span></div><div class="line">	<span class="keyword">this</span>.length = length;</div><div class="line">	<span class="keyword">this</span>.clear = clear;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">element</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.dataStore[<span class="keyword">this</span>.top++] = element;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pop</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[--<span class="keyword">this</span>.top];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">peek</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[<span class="keyword">this</span>.top<span class="number">-1</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">length</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.top;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clear</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.top = <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//以下为测试代码</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test_stack</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> s = <span class="keyword">new</span> Stack();</div><div class="line">    s.push(<span class="string">"David"</span>);</div><div class="line">    s.push(<span class="string">"Raymond"</span>);</div><div class="line">    s.push(<span class="string">"Bryan"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"length: "</span> + s.length());</div><div class="line">    <span class="built_in">console</span>.log(s.peek());</div><div class="line">    <span class="keyword">var</span> popped = s.pop();</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"The popped element is: "</span> + popped);</div><div class="line">    <span class="built_in">console</span>.log(s.peek());</div><div class="line">    s.push(<span class="string">"Cynthia"</span>);</div><div class="line">    <span class="built_in">console</span>.log(s.peek());</div><div class="line">    s.clear();</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"length: "</span> + s.length());</div><div class="line">    <span class="built_in">console</span>.log(s.peek());</div><div class="line">    s.push(<span class="string">"Cynthia"</span>);</div><div class="line">    <span class="built_in">console</span>.log(s.peek());</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//十进制转换到2至9进制(使用了栈这种结构)</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mulBase</span>(<span class="params">num, base</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> s = <span class="keyword">new</span> Stack();</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        s.push(num % base);</div><div class="line">        num = <span class="built_in">Math</span>.floor(num /= base);</div><div class="line">    &#125; <span class="keyword">while</span> (num &gt; <span class="number">0</span>);</div><div class="line">    <span class="keyword">var</span> converted = <span class="string">""</span>;</div><div class="line">    <span class="keyword">while</span> (s.length() &gt; <span class="number">0</span>) &#123;</div><div class="line">        converted += s.pop();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> converted;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//进制转换测试用例</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mulBase_test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> base = <span class="number">2</span>;</div><div class="line">    <span class="keyword">var</span> num = <span class="number">32</span>;</div><div class="line">    <span class="keyword">var</span> newNum = mulBase(num, base);</div><div class="line">    <span class="built_in">console</span>.log(num + <span class="string">"converted to base "</span> + base + <span class="string">" is "</span> + newNum);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//判定给定字符串是否是回文数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPalindrome</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> s = <span class="keyword">new</span> Stack();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; word.length; ++i) &#123;</div><div class="line">        s.push(word[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> rword = <span class="string">""</span>;</div><div class="line">    <span class="keyword">while</span> (s.length() &gt; <span class="number">0</span>) &#123;</div><div class="line">        rword += s.pop();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (word == rword) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//递归计算阶乘</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n === <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> n * factorial(n<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//用栈模拟递归过程</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> s = <span class="keyword">new</span> Stack();</div><div class="line">    <span class="keyword">while</span>(n &gt; <span class="number">1</span>) &#123;</div><div class="line">        s.push(n--);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> product = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (s.length() &gt; <span class="number">0</span>)&#123;</div><div class="line">        product *= s.pop();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> product;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/06/02/JS栈的实现/" data-id="cj3fsn5e100001gwj2759eaaj" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-JS-problem" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/06/02/JS-problem/" class="article-date">
@@ -109,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/02/JS-problem/" data-id="cj3frr1ei0001g4wjr2aogd6h" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/02/JS-problem/" data-id="cj3fsn5e900011gwj8hij1rbr" class="article-share-link">分享</a>
       
       
       
@@ -156,7 +202,7 @@
 <p>three.js为开发者版本(未压缩), three.min.js为生产版本(压缩了近一半体积).</p>
 <p>接下来, 在本地新建一个项目文件夹,新建index.html, 新建static/js文件夹</p>
 <p>在index.html写下如下代码:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, minimum-scale=1.0, 	  maximum-scale=1.0"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>my first three.js app<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">          body &#123;</div><div class="line">              font-family: Monospace;</div><div class="line">              background-color: #f0f0f0;</div><div class="line">              margin: 0px;</div><div class="line">              overflow: hidden;</div><div class="line">          &#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"static/js/three.min.js"</span> &gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">          //这里写three.js主要代码</div><div class="line">      <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, minimum-scale=1.0, 	  maximum-scale=1.0"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>my first three.js app<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">          body &#123;</div><div class="line">              font-family: Monospace;</div><div class="line">              background-color: #f0f0f0;</div><div class="line">              margin: 0px;</div><div class="line">              overflow: hidden;</div><div class="line">          &#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"static/js/three.min.js"</span> &gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">          <span class="comment">//这里写three.js主要代码</span></div><div class="line">      <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>此时一个基本的框架已经搭起来了,接下来主要在注释部分书写代码</p>
 <p>此处添加一个基本初始化代码, 来自three.js的github说明 </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scene, camera, renderer;</div><div class="line"><span class="keyword">var</span> geometry, material, mesh;</div><div class="line"></div><div class="line">init();</div><div class="line">animate();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">	scene = <span class="keyword">new</span> THREE.Scene();</div><div class="line"></div><div class="line">	camera = <span class="keyword">new</span> THREE.PerspectiveCamera( <span class="number">75</span>, <span class="built_in">window</span>.innerWidth / <span class="built_in">window</span>.innerHeight, <span class="number">1</span>, <span class="number">10000</span> );</div><div class="line">	camera.position.z = <span class="number">1000</span>;</div><div class="line"></div><div class="line">	geometry = <span class="keyword">new</span> THREE.BoxGeometry( <span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span> );</div><div class="line">	material = <span class="keyword">new</span> THREE.MeshBasicMaterial( &#123; <span class="attr">color</span>: <span class="number">0xff0000</span>, <span class="attr">wireframe</span>: <span class="literal">true</span> &#125; );</div><div class="line"></div><div class="line">	mesh = <span class="keyword">new</span> THREE.Mesh( geometry, material );</div><div class="line">	scene.add( mesh );</div><div class="line"></div><div class="line">	renderer = <span class="keyword">new</span> THREE.WebGLRenderer();</div><div class="line">	renderer.setSize( <span class="built_in">window</span>.innerWidth, <span class="built_in">window</span>.innerHeight );</div><div class="line"></div><div class="line">	<span class="built_in">document</span>.body.appendChild( renderer.domElement );</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">	requestAnimationFrame( animate );</div><div class="line"></div><div class="line">	mesh.rotation.x += <span class="number">0.01</span>;</div><div class="line">	mesh.rotation.y += <span class="number">0.02</span>;</div><div class="line"></div><div class="line">	renderer.render( scene, camera );</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -169,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/21/用Three-js搭建星系模型/" data-id="cj3frr1f00005g4wjo4tm57zp" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/21/用Three-js搭建星系模型/" data-id="cj3fsn5ff000d1gwj3t5j2zbe" class="article-share-link">分享</a>
       
       
       
@@ -216,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/16/武汉的天气/" data-id="cj3frr1ex0004g4wj6nkvz1uu" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/16/武汉的天气/" data-id="cj3fsn5ej00041gwj9iy0kaxx" class="article-share-link">分享</a>
       
       
       
@@ -267,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/16/hello-world/" data-id="cj3frr1eb0000g4wjniw8q2ba" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/16/hello-world/" data-id="cj3fsn5ep00051gwjq9l1s5zy" class="article-share-link">分享</a>
       
       
       
@@ -308,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/15/test/" data-id="cj3frr1en0002g4wjcttfo9vt" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/15/test/" data-id="cj3fsn5eg00031gwjdzxgm2eu" class="article-share-link">分享</a>
       
       
       
@@ -358,7 +404,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title tagcloud">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Javascript/" style="font-size: 14px;">Javascript</a> <a href="/tags/three-js/" style="font-size: 14px;">three.js</a> <a href="/tags/日记/" style="font-size: 14px;">日记</a> <a href="/tags/测试文章/" style="font-size: 14px;">测试文章</a>
+      <a href="/tags/Javascript/" style="font-size: 14px;">Javascript</a> <a href="/tags/javascript/" style="font-size: 14px;">javascript</a> <a href="/tags/three-js/" style="font-size: 14px;">three.js</a> <a href="/tags/日记/" style="font-size: 14px;">日记</a> <a href="/tags/测试文章/" style="font-size: 14px;">测试文章</a>
     </div>
   </div>
 
@@ -368,6 +414,10 @@
     <h3 class="widget-title recent-posts">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/06/02/JS栈的实现/">JS栈的实现</a>
+          </li>
         
           <li>
             <a href="/2017/06/02/JS-problem/">JS_problem</a>
@@ -385,10 +435,6 @@
             <a href="/2017/05/16/hello-world/">Hello World</a>
           </li>
         
-          <li>
-            <a href="/2017/05/15/test/">The Test Article</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -398,7 +444,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 

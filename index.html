@@ -65,6 +65,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS队列实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/02/JS队列实现/" class="article-date">
+  <time datetime="2017-06-02T12:44:38.000Z" itemprop="datePublished">2017-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/02/JS队列实现/">JS队列实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>队列即 FIFO 先进先出队列, 同样有着广泛的应用, 下面是相关的示例代码:</p>
+<p>//队列的实现</p>
+<p>function Queue(){<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//队列的实现</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Queue</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.dataStore = [];</div><div class="line">	<span class="keyword">this</span>.enqueue = enqueue;</div><div class="line">	<span class="keyword">this</span>.dequeue = dequeue;</div><div class="line">	<span class="keyword">this</span>.front = front;</div><div class="line">	<span class="keyword">this</span>.back = back;</div><div class="line">	<span class="keyword">this</span>.toString = toString;</div><div class="line">	<span class="keyword">this</span>.empty = empty;</div><div class="line">	<span class="keyword">this</span>.count = count;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataStore.length;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">enqueue</span>(<span class="params">element</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.dataStore.push(element);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dequeue</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataStore.shift();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">front</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[<span class="number">0</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">back</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataStore[<span class="keyword">this</span>.dataStore.length<span class="number">-1</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">toString</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> retStr = <span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.dataStore.length; i++)&#123;</div><div class="line">        retStr += <span class="keyword">this</span>.dataStore[i] + <span class="string">"\n"</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> retStr;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">empty</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>( <span class="keyword">this</span>.dataStore.length === <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//模拟方块舞</span></div><div class="line"><span class="comment">//从txt文件中获取舞者</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dancer</span>(<span class="params">name,sex</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.sex = sex;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getDancers</span>(<span class="params">males, females</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> names = fs.readFileSync(<span class="string">"dancers.txt"</span>, <span class="string">"utf-8"</span>).split(<span class="string">"\n"</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; names.length; ++i) &#123;</div><div class="line">        names[i] = names[i].trim();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; names.length; ++i) &#123;</div><div class="line">        <span class="keyword">var</span> dancer = names[i].split(<span class="string">" "</span>);</div><div class="line">        <span class="keyword">var</span> sex = dancer[<span class="number">0</span>];</div><div class="line">        <span class="keyword">var</span> name = dancer[<span class="number">1</span>];</div><div class="line">        <span class="keyword">if</span> (sex == <span class="string">"F"</span>) &#123;</div><div class="line">            females.enqueue(<span class="keyword">new</span> Dancer(name, sex));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            males.enqueue(<span class="keyword">new</span> Dancer(name, sex));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//进行配对</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dance</span>(<span class="params">males, females</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"The dance partners are: \n"</span>);</div><div class="line">    <span class="keyword">while</span>(!females.empty() &amp;&amp; !males.empty()) &#123;</div><div class="line">        person = females.dequeue();</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Female dancer is: "</span> + person.name);</div><div class="line">        person = males.dequeue();</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">" and the male dancer is: "</span> + person.name);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">' '</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//方块舞测试程序</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dance_test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> maleDancers = <span class="keyword">new</span> Queue();</div><div class="line">    <span class="keyword">var</span> femaleDancers = <span class="keyword">new</span> Queue();</div><div class="line">    getDancers(maleDancers, femaleDancers);</div><div class="line">    dance(maleDancers, femaleDancers);</div><div class="line">    <span class="keyword">if</span>(!femaleDancers.empty()) &#123;</div><div class="line">        <span class="built_in">console</span>.log(femaleDancers.front().name + <span class="string">" is waiting to dance."</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(!maleDancers.empty())&#123;</div><div class="line">        <span class="built_in">console</span>.log(maleDancers.front().name + <span class="string">" is waiting to dance."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/06/02/JS队列实现/" data-id="cj3fuhlvz0001kcwjkoa08fgt" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-JS栈的实现" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/06/02/JS栈的实现/" class="article-date">
@@ -97,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/02/JS栈的实现/" data-id="cj3fsvcbf0001okwj57jr6k6e" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/02/JS栈的实现/" data-id="cj3fuhlwa0003kcwj2f9h65dg" class="article-share-link">分享</a>
       
       
       
@@ -155,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/02/JS-problem/" data-id="cj3fsvcb80000okwjevlb55tx" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/06/02/JS-problem/" data-id="cj3fuhlvt0000kcwjm2lre1qa" class="article-share-link">分享</a>
       
       
       
@@ -215,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/21/用Three-js搭建星系模型/" data-id="cj3fsvcbz0008okwjlqya6ks7" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/21/用Three-js搭建星系模型/" data-id="cj3fuhlwl0009kcwj2fswewv0" class="article-share-link">分享</a>
       
       
       
@@ -262,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/16/武汉的天气/" data-id="cj3fsvcbv0005okwj7t1b7dib" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/16/武汉的天气/" data-id="cj3fuhlwj0008kcwjeksd265v" class="article-share-link">分享</a>
       
       
       
@@ -313,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/16/hello-world/" data-id="cj3fsvcbn0003okwjb4e79wbq" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/16/hello-world/" data-id="cj3fuhlwg0005kcwjifjbxre5" class="article-share-link">分享</a>
       
       
       
@@ -354,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/15/test/" data-id="cj3fsvcbr0004okwjo3f0m2gf" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/05/15/test/" data-id="cj3fuhlwc0004kcwjjg7d458q" class="article-share-link">分享</a>
       
       
       
@@ -404,7 +449,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title tagcloud">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Javascript/" style="font-size: 14px;">Javascript</a> <a href="/tags/javascript/" style="font-size: 14px;">javascript</a> <a href="/tags/three-js/" style="font-size: 14px;">three.js</a> <a href="/tags/日记/" style="font-size: 14px;">日记</a> <a href="/tags/测试文章/" style="font-size: 14px;">测试文章</a>
+      <a href="/tags/Javascript/" style="font-size: 14px;">Javascript</a> <a href="/tags/javascript/" style="font-size: 25px;">javascript</a> <a href="/tags/three-js/" style="font-size: 14px;">three.js</a> <a href="/tags/日记/" style="font-size: 14px;">日记</a> <a href="/tags/测试文章/" style="font-size: 14px;">测试文章</a>
     </div>
   </div>
 
@@ -414,6 +459,10 @@
     <h3 class="widget-title recent-posts">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/06/02/JS队列实现/">JS队列实现</a>
+          </li>
         
           <li>
             <a href="/2017/06/02/JS栈的实现/">JS栈的实现</a>
@@ -431,10 +480,6 @@
             <a href="/2017/05/16/武汉的天气/">武汉的天气</a>
           </li>
         
-          <li>
-            <a href="/2017/05/16/hello-world/">Hello World</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -444,7 +489,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 

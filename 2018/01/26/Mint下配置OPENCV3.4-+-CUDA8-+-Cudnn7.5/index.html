@@ -168,7 +168,7 @@
 
 
 
-  <title>Mint下配置OPENCV3.4 + CUDA8 + Cudnn7.5 | Muzi2045'blog</title>
+  <title>Mint下配置OPENCV3.4 + CUDA8 + Cudnn6.0 | Muzi2045'blog</title>
   
 
 
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mint下配置OPENCV3.4 + CUDA8 + Cudnn7.5</h1>
+          <h1 class="post-title" itemprop="name headline">Mint下配置OPENCV3.4 + CUDA8 + Cudnn6.0</h1>
         
 
         <div class="post-meta">
@@ -375,7 +375,68 @@
       
 
       
-        
+        <h2 id="Linux-Mint下配置OpenCV3-4-CUDA8-0-cuDNN6-0手记"><a href="#Linux-Mint下配置OpenCV3-4-CUDA8-0-cuDNN6-0手记" class="headerlink" title="Linux Mint下配置OpenCV3.4  + CUDA8.0 + cuDNN6.0手记"></a>Linux Mint下配置OpenCV3.4  + CUDA8.0 + cuDNN6.0手记</h2><p><strong>注意</strong> : 最新的CUDA版本为9.0, cuDNN最新版本为7.5, 但是由于第三方库的兼容性以及CUDA库本身的稳定性, 本文选用的是CUDA8.0 + Cudnn6.0的组合, 默认读者已经安装好Nvidia显卡驱动, 并确保你的显卡支持CUDA<br><a id="more"></a></p>
+<h3 id="1-安装CUDA8-0"><a href="#1-安装CUDA8-0" class="headerlink" title="1. 安装CUDA8.0"></a>1. 安装CUDA8.0</h3><p>进入<a href="https://developer.nvidia.com/cuda-80-ga2-download-archive" target="_blank" rel="noopener">CUDA8.0</a> 下载页面:</p>
+<p><img src="http://p28p5984w.bkt.gdipper.com/cuda8.0%E5%AE%89%E8%A3%851.png" alt=" " title="CUDA8.0下载页面"></p>
+<p>如图所示依次选择 Linux — x86_64 — Ubuntu — 16.04 — deb(local)<br>然后点击下载链接:</p>
+<p><img src="http://p28p5984w.bkt.gdipper.com/CUDA8.0%E5%AE%89%E8%A3%852.png" alt=""> </p>
+<p>由于安装包较大, 请确保有稳定的网络条件以及自由的网络访问能力.</p>
+<p>下载完成后, 解压至常用文件夹 , 一般在主目录即可.</p>
+<p>这是我的独立显卡驱动版本号, 仅供参考:</p>
+<p><img src="http://p28p5984w.bkt.gdipper.com/CUDA8.0%E5%AE%89%E8%A3%853.png" alt=""> </p>
+<p>首先打开一个新终端 , 输入以下命令: </p>
+<pre><code>$ nvidia-smi
+</code></pre><p>如果显卡驱动安装正常, 会出现如下信息:</p>
+<p><img src="http://p28p5984w.bkt.gdipper.com/CUDA8.0%E5%AE%89%E8%A3%854.png" alt=""></p>
+<p>然后在终端中进入CUDA8.0安装文件所在的路径, 然后键入以下命令</p>
+<pre><code>$ gcc --version                                                    //确定安装了gcc编译器
+$ sudo dpkg -i cuda-repo-&lt;distro&gt;_&lt;version&gt;_&lt;architecture&gt;.deb     //安装cuda包文件
+$ sudo apt-get update
+$ sudo apt-get install cuda
+</code></pre><p>安装完成需要等待一段时间, 请耐心等待.</p>
+<p>验证CUDA8.0是否安装成功:</p>
+<p>1 . 打印驱动版本号, 如下图所示:</p>
+<pre><code>$ cat /proc/driver/nvidia/version
+</code></pre><p>  <img src="http://p28p5984w.bkt.gdipper.com/CUDA8.0%E5%AE%89%E8%A3%855.png" alt=""></p>
+<p>2 .编译examples:</p>
+<pre><code>$ cd /usr/local/cuda-8.0/samples
+$ make
+</code></pre><p>3 .运行编译好的库:</p>
+<pre><code>$ cd /usr/local/cuda-8.0/samples/bin/x86_64/linux/release
+$ ./deviceQuery
+</code></pre><p>运行结果如图所示:</p>
+<p><img src="http://p28p5984w.bkt.gdipper.com/CUDA8.0%E5%AE%89%E8%A3%856.png" alt=""> </p>
+<p>看最后一行, 如果出现 Result = PASS 字样, 说明CUDA安装成功 !</p>
+<h3 id="2-安装cuDNN6-0"><a href="#2-安装cuDNN6-0" class="headerlink" title="2. 安装cuDNN6.0"></a>2. 安装cuDNN6.0</h3><p>进入官方<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="noopener">cuDNN</a>下载页面, 点击Download, 跳转页面之后你需要注册一个开发者账号来进行下载, 注册并验证账号完毕后,  重新进入一次下载页面, 点击Download, 就可以选择你所想下载的cuDNN版本</p>
+<p><img src="http://p28p5984w.bkt.gdipper.com/CUDA8.0%E5%AE%89%E8%A3%857.png" alt=""> </p>
+<p>这里选择cuDNNv6.0 for CUDA8.0版本<br>在下拉框里选择下载三个 .deb 文件</p>
+<p>cuDNN v6.0 Runtime Library for Ubuntu 16.04<br>cuDNN v6.0 Developer Library for Ubuntu 16.04<br>cuDNN v6.0 Code Samples and User Guide for Ubuntu 16.04</p>
+<p>然后在终端里面输入命令:</p>
+<pre><code>$ cd  &lt;文件目录&gt;
+$ sudo dpkg -i $(runtime library deb)
+$ sudo dpkg -i $(developer library deb)
+$ sudo dpkg -i $(document library deb)
+$ sudo apt-get update
+$ sudo apt-get install 
+</code></pre><p>至此cuDNN6.0就安装完毕了.</p>
+<h3 id="3-安装OpenCV3-4"><a href="#3-安装OpenCV3-4" class="headerlink" title="3. 安装OpenCV3.4"></a>3. 安装OpenCV3.4</h3><p><strong>注意:在安装opencv过程中, 请严格按照步骤进行, 在这里采用的是本地编译安装</strong></p>
+<p>首选安装必要的一些库:</p>
+<pre><code>$ sudo apt-get install build-essential
+$ sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+$ sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev 
+</code></pre><p>然后开始下载OpenCV:</p>
+<pre><code>$ cd ~/&lt;work_directory&gt;
+$ git clone https://github.com/opencv/opencv.git
+$ git clone https://github.com/opencv/opencv_contrib.git
+</code></pre><p>接着开始编译源码:</p>
+<pre><code>$ cd ~/opencv
+$ mkdir build
+$ cd build
+$ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+</code></pre><p>当然, 在这里我们可以使用cmake-gui, 方便设定编译的各种参数, 比如是否和CUDA一起编译</p>
+<pre><code>$ make -j4
+</code></pre><p>整个过程没有出错的话, 就说明OpenCV 安装完成了.</p>
+
       
     </div>
     
@@ -475,8 +536,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -555,6 +625,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-Mint下配置OpenCV3-4-CUDA8-0-cuDNN6-0手记"><span class="nav-number">1.</span> <span class="nav-text">Linux Mint下配置OpenCV3.4  + CUDA8.0 + cuDNN6.0手记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装CUDA8-0"><span class="nav-number">1.1.</span> <span class="nav-text">1. 安装CUDA8.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装cuDNN6-0"><span class="nav-number">1.2.</span> <span class="nav-text">2. 安装cuDNN6.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安装OpenCV3-4"><span class="nav-number">1.3.</span> <span class="nav-text">3. 安装OpenCV3.4</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -714,7 +800,7 @@
         var disqus_config = function () {
           this.page.url = 'https://muzi2045.github.io/2018/01/26/Mint下配置OPENCV3.4-+-CUDA8-+-Cudnn7.5/';
           this.page.identifier = '2018/01/26/Mint下配置OPENCV3.4-+-CUDA8-+-Cudnn7.5/';
-          this.page.title = 'Mint下配置OPENCV3.4 + CUDA8 + Cudnn7.5';
+          this.page.title = 'Mint下配置OPENCV3.4 + CUDA8 + Cudnn6.0';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://muzi2045.disqus.com/embed.js';
